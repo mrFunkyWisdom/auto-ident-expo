@@ -1,0 +1,9 @@
+{
+  "platforms": ["ios", "android", "web"],
+  "ios": {
+    "modules": ["IdNowAutoIdentModule"]
+  },
+  "android": {
+    "modules": ["com.enso.idnowautoident.IdNowAutoIdentModule"]
+  }
+}

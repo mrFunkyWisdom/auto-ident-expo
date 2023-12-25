@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "id-now-auto-ident": ["../src/index"],
+      "id-now-auto-ident/*": ["../src/*"]
+    }
+  }
+}
