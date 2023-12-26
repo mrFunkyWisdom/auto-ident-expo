@@ -1,26 +1,38 @@
-import { NativeModulesProxy, EventEmitter, Subscription } from 'expo-modules-core';
+import IdNowAutoIdentModule from "./IdNowAutoIdentModule";
 
-// Import the native module. On web, it will be resolved to IdNowAutoIdent.web.ts
-// and on native platforms to IdNowAutoIdent.ts
-import IdNowAutoIdentModule from './IdNowAutoIdentModule';
-import IdNowAutoIdentView from './IdNowAutoIdentView';
-import { ChangeEventPayload, IdNowAutoIdentViewProps } from './IdNowAutoIdent.types';
-
-// Get the native constant value.
-export const PI = IdNowAutoIdentModule.PI;
-
-export function hello(): string {
-  return IdNowAutoIdentModule.hello();
+export enum IdNowLanguage {
+  bg = "bg", // Bulgarian
+  cs = "cs", // Czech
+  da = "da", // Danish
+  de = "de", // German
+  el = "el", // Greek
+  en = "en", // English
+  es = "es", // Spanish
+  et = "et", // Estonian
+  fi = "fi", // Finnish
+  fr = "fr", // French
+  hr = "hr", // Croatian
+  hu = "hu", // Hungarian
+  it = "it", // Italian
+  ja = "ja", // Japanese
+  ka = "ka", // Georgian
+  ko = "ko", // Korean
+  lt = "lt", // Lithuanian
+  lv = "lv", // Latvian
+  nb = "nb", // Norwegian
+  nl = "nl", // Dutch
+  pl = "pl", // Polish
+  pt = "pt", // Portuguese
+  ro = "ro", // Romanian
+  ru = "ru", // Russian
+  sk = "sk", // Slovak
+  sl = "sl", // Slovenian
+  sr = "sr", // Serbian
+  sv = "sv", // Swedish
+  tr = "tr", // Turkish
+  zh = "zh", // Chinese
 }
 
-export async function setValueAsync(value: string) {
-  return await IdNowAutoIdentModule.setValueAsync(value);
+export async function startAutoIdent(token: string, language: IdNowLanguage = IdNowLanguage.en) {
+  return await IdNowAutoIdentModule.start(token, language);
 }
-
-const emitter = new EventEmitter(IdNowAutoIdentModule ?? NativeModulesProxy.IdNowAutoIdent);
-
-export function addChangeListener(listener: (event: ChangeEventPayload) => void): Subscription {
-  return emitter.addListener<ChangeEventPayload>('onChange', listener);
-}
-
-export { IdNowAutoIdentView, IdNowAutoIdentViewProps, ChangeEventPayload };

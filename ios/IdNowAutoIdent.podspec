@@ -22,6 +22,21 @@ Pod::Spec.new do |s|
     'DEFINES_MODULE' => 'YES',
     'SWIFT_COMPILATION_MODE' => 'wholemodule'
   }
-  
+
+  s.vendored_frameworks = 'Frameworks/IDNowSDKCore-without-NFC.xcframework/ios-arm64_x86_64-simulator/IDNowSDKCore.framework',  'Frameworks/FaceTecSDK.xcframework'
+
+
+  s.private_header_files = [
+  'Frameworks/FaceTecSDK.xcframework/ios-arm64/FaceTecSDK.framework/Headers/*.h',
+  'Frameworks/FaceTecSDK.xcframework/ios-arm64_x86_64-simulator/FaceTecSDK.framework/Headers/*.h',
+  'Frameworks/IDNowSDKCore-without-NFC.xcframework/ios-arm64_x86_64-simulator/IDNowSDKCore.framework/Headers/*.h',
+  'Frameworks/IDNowSDKCore-without-NFC.xcframework/ios-arm64/IDNowSDKCore.framework/Headers/*.h'
+  ]
+
+  s.preserve_paths = [
+  "Frameworks/FaceTecSDK.xcframework/**/*",
+  "Frameworks/IDNowSDKCore-without-NFC.xcframework/**/*"
+  ]
+  s.dependency 'XS2AiOSNetService' , '~> 1.0.7'
   s.source_files = "**/*.{h,m,swift}"
 end
