@@ -27,6 +27,22 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      ["expo-build-properties", {
+          "android": {
+            "android": {
+              "minSdkVersion": 23,
+              "extraMavenRepos": [
+                "https://raw.githubusercontent.com/idnow/de.idnow.android.sdk/master"
+              ]
+            },
+            "ios": {
+              "deploymentTarget": "13.0"
+            }
+          }
+        }
+      ]
+    ]
   }
 }

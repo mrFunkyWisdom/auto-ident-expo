@@ -36,3 +36,8 @@ export enum IdNowLanguage {
 export async function startAutoIdent(token: string, language: IdNowLanguage = IdNowLanguage.en) {
   return await IdNowAutoIdentModule.start(token, language);
 }
+
+export async function autoIdentInitAndroid(language: IdNowLanguage = IdNowLanguage.en) {
+  return await IdNowAutoIdentModule.init(language);
+}
+
