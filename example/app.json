@@ -2,7 +2,7 @@
   "expo": {
     "name": "id-now-auto-ident-example",
     "slug": "id-now-auto-ident-example",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -29,19 +29,20 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      ["expo-build-properties", {
-          "android": {
+      [
+        "expo-build-properties",
+        {
             "android": {
               "minSdkVersion": 23,
               "extraMavenRepos": [
                 "https://raw.githubusercontent.com/idnow/de.idnow.android.sdk/master"
-              ]
+              ],
+              "kotlinVersion": "1.8.0"
             },
             "ios": {
               "deploymentTarget": "13.0"
             }
           }
-        }
       ]
     ]
   }

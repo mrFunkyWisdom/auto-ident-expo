@@ -84,10 +84,6 @@ android {
 
 repositories {
   mavenCentral()
-  maven {
-    url "https://raw.githubusercontent.com/idnow/de.idnow.android.sdk/master"
-  }
-
 }
 
 dependencies {

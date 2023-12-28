@@ -87,9 +87,14 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0.0"
-
+        versionName "1.0.1"
+        renderscriptTargetApi 21
+        renderscriptSupportModeEnabled true
+        vectorDrawables.useSupportLibrary = true
         buildConfigField("boolean", "REACT_NATIVE_UNSTABLE_USE_RUNTIME_SCHEDULER_ALWAYS", (findProperty("reactNative.unstable_useRuntimeSchedulerAlways") ?: true).toString())
+    }
+     packagingOptions {
+            pickFirst 'lib/armeabi-v7a/libRSSupport.so'
     }
     signingConfigs {
         debug {
@@ -137,7 +142,7 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
-
+    implementation "de.idnow.android.sdk:idnow-platform:5.6.0"
     def isGifEnabled = (findProperty('expo.gif.enabled') ?: "") == "true";
     def isWebpEnabled = (findProperty('expo.webp.enabled') ?: "") == "true";
     def isWebpAnimatedEnabled = (findProperty('expo.webp.animated') ?: "") == "true";

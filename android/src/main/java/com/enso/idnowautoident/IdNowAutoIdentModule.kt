@@ -1,10 +1,10 @@
 package com.enso.idnowautoident
+import de.idnow.core.IDnowConfig
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 import expo.modules.kotlin.Promise
-import com.idnow.sdk.IDnowConfig
-import com.idnow.sdk.IDnowResult
-import com.idnow.sdk.IDnowSDK
+import de.idnow.core.IDnowSDK
+import expo.modules.kotlin.AppContext
 
 class IdNowAutoIdentModule : Module() {
 
@@ -12,13 +12,8 @@ class IdNowAutoIdentModule : Module() {
   override fun definition() = ModuleDefinition {
     Name("IdNowAutoIdent")
 
-    Function("init") { language: String ->
-      val idnowConfig = IDnowConfig.Builder.getInstance()
-              .withLanguage(language)
-              .build()
-
-      idnowSdk = IDnowSDK.getInstance()
-      idnowSdk.initialize(this, idnowConfig)
+    Function("init") { language: String, promise: Promise ->
+      promise.resolve("init stuff " + language)
     }
 
     AsyncFunction("start") { token: String, language: String, promise: Promise ->
@@ -26,3 +21,4 @@ class IdNowAutoIdentModule : Module() {
     }
   }
 }
+
