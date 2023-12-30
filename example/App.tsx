@@ -5,11 +5,9 @@ import { Platform, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   useEffect(() => {
-    if (Platform.OS === "android") {
       IdNowAutoIdent.autoIdentInitAndroid(IdNowLanguage.en).then((r) => {
         console.log("STARTED ANDROID SDK ", r);
       });
-    } else {
       setTimeout(() => {
         IdNowAutoIdent.startAutoIdent("TST-BRLYCD-KN", IdNowLanguage.en).then(
           (d) => {
@@ -17,7 +15,6 @@ export default function App() {
           },
         );
       }, 2000);
-    }
   }, []);
 
   return (

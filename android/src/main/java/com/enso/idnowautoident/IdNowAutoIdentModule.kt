@@ -1,10 +1,13 @@
 package com.enso.idnowautoident
+
 import de.idnow.core.IDnowConfig
+import de.idnow.core.IDnowResult
+import de.idnow.core.IDnowSDK
+import de.idnow.core.IDnowSDK.IDnowResultListener
+import expo.modules.kotlin.Promise
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
-import expo.modules.kotlin.Promise
-import de.idnow.core.IDnowSDK
-import expo.modules.kotlin.AppContext
+
 
 class IdNowAutoIdentModule : Module() {
 
@@ -12,12 +15,27 @@ class IdNowAutoIdentModule : Module() {
   override fun definition() = ModuleDefinition {
     Name("IdNowAutoIdent")
 
-    Function("init") { language: String, promise: Promise ->
-      promise.resolve("init stuff " + language)
+    AsyncFunction("init") { language: String, promise: Promise ->
+      val activity = appContext.activityProvider?.currentActivity
+      val idnowConfig = IDnowConfig.Builder.getInstance()
+              .withLanguage("de")
+              .build()
+
+      idnowSdk = IDnowSDK.getInstance()
+      if (activity != null) {
+        idnowSdk.initialize(activity, idnowConfig)
+        promise.resolve("initialized sdk with language " + language)
+      } else {
+        promise.resolve("Failed to resolve idnow init activity is empty")
+      }
+
     }
 
     AsyncFunction("start") { token: String, language: String, promise: Promise ->
-      promise.resolve("Hello there "+ token + " " + language)
+      val listener = IDnowResultListener {it: IDnowResult ->
+        promise.resolve(it.toString())
+      }
+      idnowSdk.startIdent(token, listener)
     }
   }
 }
