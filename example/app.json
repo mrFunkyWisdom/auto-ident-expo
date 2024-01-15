@@ -16,7 +16,11 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.enso.idnowautoident.example"
+      "bundleIdentifier": "com.enso.idnowautoident.example",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to scan your face. :)",
+        "NSPhotoLibraryUsageDescription": "This can request access to your photo library to upload documents."
+      }
     },
     "android": {
       "adaptiveIcon": {

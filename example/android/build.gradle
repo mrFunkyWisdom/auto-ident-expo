@@ -3,9 +3,9 @@
 buildscript {
     ext {
         buildToolsVersion = findProperty('android.buildToolsVersion') ?: '33.0.0'
-        minSdkVersion = 23
-        compileSdkVersion = 34
-        targetSdkVersion = 34
+        minSdkVersion = Integer.parseInt(findProperty('android.minSdkVersion') ?: '21')
+        compileSdkVersion = Integer.parseInt(findProperty('android.compileSdkVersion') ?: '33')
+        targetSdkVersion = Integer.parseInt(findProperty('android.targetSdkVersion') ?: '33')
         kotlinVersion = findProperty('android.kotlinVersion') ?: '1.8.10'
         frescoVersion = findProperty('expo.frescoVersion') ?: '2.5.0'
 
@@ -17,14 +17,13 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath('com.android.tools.build:gradle:7.3.1')
+        classpath('com.android.tools.build:gradle:7.4.2')
         classpath('com.facebook.react:react-native-gradle-plugin')
     }
 }
 
 allprojects {
     repositories {
-
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url(new File(['node', '--print', "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim(), '../android'))
@@ -34,13 +33,6 @@ allprojects {
             url(new File(['node', '--print', "require.resolve('jsc-android/package.json')"].execute(null, rootDir).text.trim(), '../dist'))
         }
 
-        maven() {
-            url "https://raw.githubusercontent.com/idnow/de.idnow.android/master"
-            content {
-                includeModule("de.idnow.sdk", "idnow-android-sdk")
-                includeModule("de.idnow.insights", "idnow-android-insights-sdk")
-            }
-        }
         google()
         mavenCentral()
         maven { url 'https://www.jitpack.io' }

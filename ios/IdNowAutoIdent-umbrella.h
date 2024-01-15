@@ -1,2 +1,2 @@
-@import IDNowSDKCore;
-@import IDNowSDKCore-without-NFC;
+@_implementationOnly @import IDNowSDKCore;
+@_implementationOnly @import IDNowSDKCore-without-NFC;

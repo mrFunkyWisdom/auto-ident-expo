@@ -1,6 +1,5 @@
 import ExpoModulesCore
 import IDNowSDKCore
-
 public class IdNowAutoIdentModule: Module {
 
   public func definition() -> ModuleDefinition {

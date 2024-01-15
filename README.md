@@ -28,6 +28,18 @@ npm install id-now-auto-ident
 
 Run `npx pod-install` after installing the npm package.
 
+add permisions to use camera for ios 
+```json
+"expo": {
+    "ios": {
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to scan your face. :)",
+        "NSPhotoLibraryUsageDescription": "This can request access to your photo library to upload documents."
+      }
+    }
+  }
+
+```
 
 ### Configure for Android
 
@@ -54,6 +66,7 @@ App.json file needs to look like this:
     {
     "android": {
       "minSdkVersion": 23,
+      "kotlinVersion": "1.8.0"
       "extraMavenRepos": ["https://raw.githubusercontent.com/idnow/de.idnow.android.sdk/master"]
     },
 }
