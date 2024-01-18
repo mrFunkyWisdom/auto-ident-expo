@@ -1,6 +1,6 @@
 {
-  "name": "id-now-auto-ident",
-  "version": "0.1.0",
+  "name": "expo-idnow-auto-ident",
+  "version": "0.0.1",
   "description": "Auto ident from IDNow for expo",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -25,9 +25,9 @@
   "bugs": {
     "url": "https://enso.works/issues"
   },
-  "author": "Ensar Bavrk <ensar.bavrk@additiv.com> ()",
+  "author": "Ensar Bavrk <ensar.bavrk@gmail.com> ()",
   "license": "MIT",
-  "homepage": "https://enso.works#readme",
+  "homepage": "https://enso.works",
   "dependencies": {},
   "devDependencies": {
     "@types/react": "^18.0.25",

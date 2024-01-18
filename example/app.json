@@ -45,9 +45,10 @@
             },
             "ios": {
               "deploymentTarget": "13.0"
-            }
+            },
           }
-      ]
+      ],
+      ["../plugins/build/withIdNowAutoIdent"]
     ]
   }
 }
