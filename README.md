@@ -43,6 +43,15 @@ add permisions to use camera for ios
 
 ### Configure for Android
 
+Install config plugin 
+```shell
+npm install expo-idnow-auto-ident-config-plugin --save
+
+or
+
+yarn add expo-idnow-auto-ident-config-plugin  
+```
+
 In order to work with android it needs to have access to the custom maven repository.
 This needs to be added into build.gradle file in allProjects secction.
 ```
