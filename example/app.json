@@ -16,7 +16,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.enso.idnowautoident.example",
+      "bundleIdentifier": "works.enso.idnowautoident.example",
       "infoPlist": {
         "NSCameraUsageDescription": "This app uses the camera to scan your face. :)",
         "NSPhotoLibraryUsageDescription": "This can request access to your photo library to upload documents."
@@ -27,7 +27,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.enso.idnowautoident.example"
+      "package": "works.enso.idnowautoident.example",
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -45,7 +46,7 @@
             },
             "ios": {
               "deploymentTarget": "13.0"
-            },
+            }
           }
       ],
       ["../plugins/build/withIdNowAutoIdent"]

@@ -27,7 +27,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.enso.idnowautoident.example</string>
+          <string>works.enso.idnowautoident.example</string>
         </array>
       </dict>
     </array>

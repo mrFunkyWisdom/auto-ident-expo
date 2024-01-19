@@ -18,7 +18,7 @@ class IdNowAutoIdentModule : Module() {
     AsyncFunction("init") { language: String, promise: Promise ->
       val activity = appContext.activityProvider?.currentActivity
       val idnowConfig = IDnowConfig.Builder.getInstance()
-              .withLanguage("de")
+              .withLanguage(language)
               .build()
 
       idnowSdk = IDnowSDK.getInstance()
@@ -33,7 +33,7 @@ class IdNowAutoIdentModule : Module() {
 
     AsyncFunction("start") { token: String, language: String, promise: Promise ->
       val listener = IDnowResultListener {it: IDnowResult ->
-        promise.resolve(it.toString())
+        promise.resolve(it.toString()+ " " + language)
       }
       idnowSdk.startIdent(token, listener)
     }

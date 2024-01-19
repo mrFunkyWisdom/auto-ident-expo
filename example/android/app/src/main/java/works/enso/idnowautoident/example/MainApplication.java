@@ -1,4 +1,4 @@
-package com.enso.idnowautoident.example;
+package works.enso.idnowautoident.example;
 
 import android.app.Application;
 import android.content.res.Configuration;

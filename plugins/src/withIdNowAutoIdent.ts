@@ -1,4 +1,8 @@
-const { withDangerousMod, withPlugins } = require("@expo/config-plugins");
+const {
+  withDangerousMod,
+  withPlugins,
+  withAndroidManifest,
+} = require("@expo/config-plugins");
 const fs = require("fs");
 const path = require("path");
 
@@ -10,8 +14,128 @@ async function saveFile(path, content) {
   return fs.promises.writeFile(path, content, "utf8");
 }
 
-module.exports = (config) =>
-  withPlugins(config, [
+function manageAndroidManifest(config) {
+  config = withAndroidManifest(config, async (config) => {
+    const androidManifest = config.modResults.manifest;
+    const permisions = androidManifest["uses-permission"];
+    if (permisions) {
+      if (
+        permisions.find(
+          (per) => per["$"]["android:name"] !== "android.permission.INTERNET",
+        )
+      ) {
+        androidManifest["uses-permission"].push({
+          $: {
+            "android:name": "android.permission.INTERNET",
+          },
+        });
+      }
+      if (
+        permisions.find(
+          (per) => per["$"]["android:name"] !== "android.permission.CAMERA",
+        )
+      ) {
+        androidManifest["uses-permission"].push({
+          $: {
+            "android:name": "android.permission.CAMERA",
+          },
+        });
+      }
+      if (
+        permisions.find(
+          (per) =>
+            per["$"]["android:name"] !==
+            "android.permission.ACCESS_NETWORK_STATE",
+        )
+      ) {
+        androidManifest["uses-permission"].push({
+          $: {
+            "android:name": "android.permission.ACCESS_NETWORK_STATE",
+          },
+        });
+      }
+      if (
+        permisions.find(
+          (per) => per["$"]["android:name"] !== "android.permission.FLASHLIGHT",
+        )
+      ) {
+        androidManifest["uses-permission"].push({
+          $: {
+            "android:name": "android.permission.FLASHLIGHT",
+          },
+        });
+      }
+      if (
+        permisions.find(
+          (per) =>
+            per["$"]["android:name"] !==
+            "android.permission.FOREGROUND_SERVICE",
+        )
+      ) {
+        androidManifest["uses-permission"].push({
+          $: {
+            "android:name": "android.permission.FOREGROUND_SERVICE",
+          },
+        });
+      }
+      if (
+        permisions.find(
+          (per) =>
+            per["$"]["android:name"] !== "android.permission.READ_MEDIA_IMAGES",
+        )
+      ) {
+        androidManifest["uses-permission"].push({
+          $: {
+            "android:name": "android.permission.READ_MEDIA_IMAGES",
+          },
+        });
+      }
+      if (
+        permisions.find(
+          (per) =>
+            per["$"]["android:name"] !==
+            "android.permission.POST_NOTIFICATIONS",
+        )
+      ) {
+        androidManifest["uses-permission"].push({
+          $: {
+            "android:name": "android.permission.POST_NOTIFICATIONS",
+          },
+        });
+      }
+    }
+
+    const features = androidManifest["uses-feature"];
+    if (!features) {
+      androidManifest["uses-feature"] = [
+        {
+          $: {
+            "android:name": "android.hardware.camera",
+            "android:required": "true",
+          },
+        },
+        {
+          $: {
+            "android:name": "android.hardware.camera.autofocus",
+            "android:required": "false",
+          },
+        },
+        {
+          $: {
+            "android:glEsVersion": "0x00020000",
+            "android:required": "true",
+          },
+        },
+      ];
+    }
+
+    return config;
+  });
+  return config;
+}
+
+function manageBuildGradle(config) {
+  config = withPlugins(config, [
     (config) => {
       return withDangerousMod(config, [
         "android",
@@ -38,4 +162,14 @@ module.exports = (config) =>
         },
       ]);
     },
+  ]);
+
+  return config;
+}
+
+declare let module: any;
+module.exports = (config, data) =>
+  withPlugins(config, [
+    [manageAndroidManifest, data],
+    [manageBuildGradle, data],
   ]);

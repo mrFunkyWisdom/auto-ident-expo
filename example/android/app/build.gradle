@@ -81,12 +81,12 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.idnowautoidentexample"
+    namespace 'works.enso.idnowautoident.example'
     defaultConfig {
         renderscriptTargetApi 21
         renderscriptSupportModeEnabled true
         vectorDrawables.useSupportLibrary = true
-        applicationId 'com.enso.idnowautoident.example'
+        applicationId 'works.enso.idnowautoident.example'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "@config/expo-idnow-auto-ident",
+    "slug": "@configexpo-idnow-auto-ident",
+    "version": "0.0.1",
+    "description": "Config plugin for android",
+    "sdkVersion": "49.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  }
+}
