@@ -38,7 +38,7 @@
         "expo-build-properties",
         {
             "android": {
-              "minSdkVersion": 23,
+              "minSdkVersion": 24,
               "extraMavenRepos": [
                 "https://raw.githubusercontent.com/idnow/de.idnow.android.sdk/master"
               ],
