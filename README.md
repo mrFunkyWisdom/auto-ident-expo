@@ -51,32 +51,17 @@ or
 
 yarn add expo-idnow-auto-ident-config-plugin  
 ```
+add installed plugin in app.json plugins section
 
-In order to work with android it needs to have access to the custom maven repository.
-This needs to be added into build.gradle file in allProjects secction.
-```
-maven {
-  url "https://raw.githubusercontent.com/idnow/de.idnow.android.sdk/master"
-}
-```
-maven repository in expo can be added with **expo-build-properties** plugin.
-```shell
-npx expo install expo-build-properties
-```
-```json
-"extraMavenRepos": ['https://raw.githubusercontent.com/idnow/de.idnow.android.sdk/master']
-```
-
-it also requires to have _**minSdkVersion:  23**_ which can be also defined with the same build properties plugin.
-
+Package requires to have _**minSdkVersion:  23**_ which can be also defined with the same build properties plugin.
 App.json file needs to look like this:
+
 ```json
 "expo-build-properties",
     {
     "android": {
       "minSdkVersion": 23,
       "kotlinVersion": "1.8.0"
-      "extraMavenRepos": ["https://raw.githubusercontent.com/idnow/de.idnow.android.sdk/master"]
     },
 }
 ```

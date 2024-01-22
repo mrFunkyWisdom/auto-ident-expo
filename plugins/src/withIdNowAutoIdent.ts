@@ -133,6 +133,45 @@ function manageAndroidManifest(config) {
   });
   return config;
 }
+/*
+const withMavenArtifactory = contents.replace(
+  "allprojects {",
+  'allprojects {\n  repositories {\n   maven { url "https://raw.githubusercontent.com/idnow/de.idnow.android.sdk/master" }',
+);*/
+
+const mavenArtifactory = `allprojects {   
+    repositories { 
+        maven { url "https://raw.githubusercontent.com/idnow/de.idnow.android.sdk/master" }
+      `;
+
+function withMavenArtifactory(config) {
+  return withPlugins(config, [
+    (config) => {
+      return withDangerousMod(config, [
+        'android',
+        async (config) => {
+          const file = path.join(
+            config.modRequest.platformProjectRoot,
+            'build.gradle'
+          );
+
+          const contents = await readFile(file);
+          const newContents = contents.replace(
+            'allprojects {\n    repositories {',
+            mavenArtifactory
+          );
+          /*
+           * Now re-adds the content
+           */
+          await saveFile(file, newContents);
+          return config;
+        },
+      ]);
+    },
+  ]);
+}
+
+
 
 function manageBuildGradle(config) {
   config = withPlugins(config, [
@@ -172,4 +211,5 @@ module.exports = (config, data) =>
   withPlugins(config, [
     [manageAndroidManifest, data],
     [manageBuildGradle, data],
+    [withMavenArtifactory, data],
   ]);
