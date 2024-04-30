@@ -16,6 +16,11 @@ IDnow mobile SDKs for integration into customer-specific apps to support the Aut
 
 # Installation 
 
+
++ **IDNow auto ident for expo** - [![npm version](https://badge.fury.io/js/expo-idnow-auto-ident.svg)](https://badge.fury.io/js/expo-idnow-auto-ident)
++ **IDNow auto ident for expo configuration plugin** -[![npm version](https://badge.fury.io/js/expo-idnow-auto-ident-config-plugin.svg)](https://badge.fury.io/js/expo-idnow-auto-ident-config-plugin)
+
+
 For bare React Native projects, you must ensure that you have [installed and configured the `expo` package](https://docs.expo.dev/bare/installing-expo-modules/) before continuing.
 
 ### Add the package to your npm dependencies
@@ -44,6 +49,7 @@ add permisions to use camera for ios
 ### Configure for Android
 
 Install config plugin 
+
 ```shell
 npm install expo-idnow-auto-ident-config-plugin --save
 
