@@ -1,5 +1,5 @@
 import * as IdNowAutoIdent from "id-now-auto-ident";
-import { IdNowLanguage } from "id-now-auto-ident";
+import { IdNowLanguage, AutoIdentResponseDescriptions } from "id-now-auto-ident";
 import { useEffect } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 
@@ -11,7 +11,8 @@ export default function App() {
       setTimeout(() => {
         IdNowAutoIdent.startAutoIdent("TST-BRLYCD-KN", IdNowLanguage.en).then(
           (d) => {
-            console.log("DATA FROM START AUTO IDENT ", d);
+            console.log("DATA FROM START AUTO IDENT ",
+              AutoIdentResponseDescriptions[d.status] , " ", d);
           },
         );
       }, 2000);

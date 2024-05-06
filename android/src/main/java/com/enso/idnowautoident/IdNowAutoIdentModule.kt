@@ -52,7 +52,7 @@ class IdNowAutoIdentModule : Module() {
     AsyncFunction("start") { token: String, language: String, promise: Promise ->
       val listener = IDnowResultListener {it: IDnowResult ->
         val idkRes = IdentResult(it.statusCode, it.resultType)
-        promise.resolve(idkRes.getJSONResult())
+        promise.resolve(idkRes.getJSONResult().toString())
       }
       idnowSdk.startIdent(token, listener)
     }
