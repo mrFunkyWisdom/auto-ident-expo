@@ -24,7 +24,6 @@ data class IdentResult(val status: String, val desResType: IDnowResult.ResultTyp
     jsonObj.put("description", description)
     return jsonObj
   }
-
 }
 
 class IdNowAutoIdentModule : Module() {
@@ -35,7 +34,8 @@ class IdNowAutoIdentModule : Module() {
 
     AsyncFunction("init") { language: String, promise: Promise ->
       val activity = appContext.activityProvider?.currentActivity
-      val idnowConfig = IDnowConfig.Builder.getInstance()
+      val idnowConfig = IDnowConfig.Builder
+              .getInstance()
               .withLanguage(language)
               .build()
 
@@ -46,7 +46,6 @@ class IdNowAutoIdentModule : Module() {
       } else {
         promise.resolve("Failed to resolve idnow init activity is empty")
       }
-
     }
 
     AsyncFunction("start") { token: String, language: String, promise: Promise ->
